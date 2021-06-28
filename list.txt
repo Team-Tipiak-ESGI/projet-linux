@@ -1,0 +1,2 @@
+login1:nom1:prenom1:group11:group12:group13:pwd1
+login2:nom2:prenom2:group21:group22:group23:pwd2
