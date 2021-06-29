@@ -1,3 +1,6 @@
+BEGIN {
+	print
+}
 {
 login=$1
 nom=$2
