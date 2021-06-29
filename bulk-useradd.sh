@@ -1,5 +1,12 @@
 #!/bin/bash/
 
+if [ $# -eq 0 ]
+ then
+	echo "Merci de mettre un fichier en argument"
+	echo "usage `useradd ficher.txt`"
+	exit 1
+fi
+
 echo "###########################################################################"
 echo "#										#"
 echo "# useradd - ESGI edition							#"
@@ -12,6 +19,8 @@ echo "# mot de passe expirable							#"
 echo "#										#"
 echo "###########################################################################"
 
+sleep 2
+
 flags_home="--create-home " # creation du home @/home/user
 flags_shell="--shell /bin/bash " # affectation du shell bash a l'user, on peux mettre zsh pour plus de flex
 flags_groups="--groups $groups " # affectations des groupes TODO: A verifier au prealable si les groupes sont pas au prealable crees
@@ -22,6 +31,14 @@ user_password=""
 user_name=""
 
 
-passwd -e $user_name
+# passwd -e $user_name
 
 #TODO: Creation Script GAWK pour parse le fichier utilisateur
+
+
+# Lecture du fichier sortie d'awk
+while read -r commands
+do
+	$commands
+done < awk_out.tmp
+rm awk_out.tmp
