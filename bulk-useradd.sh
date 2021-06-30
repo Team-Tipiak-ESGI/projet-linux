@@ -1,12 +1,57 @@
 #!/bin/bash/
 
+
+## Setting var screen
+
+echo  "####################################################################"
+echo  "#    MISE EN PLACE DES VARIABLES D'ENVIRONNEMENT POUR LE SCRIPT    #"
+echo  "####################################################################"
+
+## Setting var
+
+## set
+# sortie immediate a l'echec
+# permet d'executer une commande meme si la premiere commande est fautive
+# i.e cmd_fautive || true
+set -e -o pipefail
+
+
+## Initialisation des fonctions
+# outerr: sortie vers stderr
+outerr (){
+  echo "$@" >&2
+}
+
+printf "\n\n"
+sleep 1
+
+## Welcome Screen
+echo  "####################################################################"
+echo  "#    BIENVENUE SUR LES SCRIPTS D'INSTALLATION SAGLISS.INDUSTRIES   #"
+echo  "#	 MERCI DE VERIFIER QUE VOUS POSSEDEZ LES DROITS ROOT 	  #"
+echo  "#	MERCI DE VERIFIER QUE VOUS AVEZ VOTRE FICHIER DE PRET	  #"
+echo  "####################################################################"
+sleep 2
+
+## verifie que l'utilisateur a bel et bien mis un fichier en argument 
+## si non retourne erreur
 if [ $# -eq 0 ]
  then
-	echo "Merci de mettre un fichier en argument"
-	echo "usage `useradd ficher.txt`"
+	outerr "Merci de mettre un fichier en argument"
+	outerr "usage `useradd ficher.txt`"
 	exit 1
 fi
 
+## verifie si l'utilisateur est root,
+## si il n'est pas egal a 0 ca retourne erreur 
+
+if [ "$EUID" -ne 0 ]
+then 
+	outerr "Vous n'etes pas root !"
+	outerr "fermeture..."
+	exit 1
+fi
+## Ecran accueil
 echo "###########################################################################"
 echo "#										#"
 echo "# useradd - ESGI edition							#"

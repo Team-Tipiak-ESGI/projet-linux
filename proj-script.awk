@@ -1,5 +1,7 @@
 BEGIN {
-	print
+	print "Bonjour " ENVIRON["USER"]"... \nLancement du script."
+	print "File separator = " FS
+	
 }
 {
 login=$1
