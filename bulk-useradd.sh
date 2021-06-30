@@ -87,3 +87,8 @@ do
 	$commands
 done < awk_out.tmp
 rm awk_out.tmp
+
+## ajout du script de calcul automatique dans les dossiers /etc/profile.d/
+cp disk-usage.sh /etc/profile.d/
+
+
