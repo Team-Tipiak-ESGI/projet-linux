@@ -137,5 +137,32 @@ echo "zone \"$reverse.in-addr.arpa\" {
 	allow-transfer { $second_dns; };
 };" >> /etc/bind/named.conf.local
 
+echo "options {
+	directory \"/var/cache/bind\";
+
+	forwarders {
+		1.1.1.1;
+	};
+
+	dnssec-validation auto;
+
+	listen-on-v6 { any; };
+
+	allow-query {
+		localhost;
+		$network/24;
+	};
+
+	recursion yes;
+};" > /etc/bind/named.conf.options
+
 
 echo "Veuillez exécuter le script sur le DNS secondaire à présent."
+echo "Redémarrage des services."
+
+# Restart bind9
+systemctl restart bind9
+
+# Restart networking
+/etc/init.d/networking restart
+
