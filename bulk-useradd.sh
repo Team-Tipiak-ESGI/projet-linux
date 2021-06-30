@@ -1,4 +1,4 @@
-#!/bin/bash/
+#!/bin/bash
 
 
 ## Setting var screen
@@ -66,25 +66,13 @@ echo "##########################################################################
 
 sleep 2
 
-flags_home="--create-home " # creation du home @/home/user
-flags_shell="--shell /bin/bash " # affectation du shell bash a l'user, on peux mettre zsh pour plus de flex
-flags_groups="--groups $groups " # affectations des groupes TODO: A verifier au prealable si les groupes sont pas au prealable crees
-flags_primary="--gid $groups[1] " # groups etant un tableau de group1 -> groupN
-flags_password="--password $(echo $password | openssl passwd -crypt -stdin)" # voir le man de useradd et passwd
-
-user_password=""
-user_name=""
-
-
-# passwd -e $user_name
-
-#TODO: Creation Script GAWK pour parse le fichier utilisateur
-
+awk -F ':' -f parser.awk $# > awk_out.tmp
 
 # Lecture du fichier sortie d'awk
 while read -r commands
 do
 	$commands
+#done < testout.txt
 done < awk_out.tmp
 rm awk_out.tmp
 
