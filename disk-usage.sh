@@ -9,7 +9,7 @@ then
 	exit 1
 fi
 var=($(du -s /home/* | sort -nr))
-echo = "top 5 des utilisateurs les plus gourmands :"
+printf "top 5 des utilisateurs les plus gourmands :\n"
 for ((i=0 ; 10 - $i ; i++))
 do
 	if [ $((i%2)) -eq 0 ]
@@ -26,8 +26,8 @@ do
 		#echo $go
 		#echo $to
 	else
-		username= echo ${var[$i]} | cut -d'/' -f3
-		echo $username
+		username=$(echo ${var[$i]} | cut -d/ -f3)
+		printf "%s\n" "$username"
 fi
 	if [ $((i%2)) -eq 0 ]
 	then
