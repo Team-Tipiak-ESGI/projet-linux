@@ -1,7 +1,7 @@
 
 #!/bin/bash
 var=($(du -sb /home/* 2> >(grep -v '^du: \(impossible\|cannot\)' >&2) | sort -nr))
-printf "ATTENTION, Certains fichiers peuvent etre masques, et par consequent fausser les resultats du top \n"
+printf "\n\n\nATTENTION: Certains fichiers peuvent etre masques, et par consequent fausser les resultats du top \n"
 printf "top 5 des utilisateurs les plus gourmands :\n"
 for ((i=0 ; 10 - $i ; i++))
 do

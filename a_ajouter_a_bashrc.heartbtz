@@ -1,0 +1,14 @@
+##################################################
+#Tout ce qui est en dessous est suppressible
+du=($(du -sb $HOME))
+temp=$((${du[0]}))
+to=$(($temp / 1099511627776))
+go=$((($temp - $to * 1099511627776) / 1073741824))
+mo=$((($temp - $go * 1073741824) / 1048576))
+ko=$((($temp - $mo * 1048576) / 1024))
+o=$(($temp - $to * 1099511627776 - $go * 1073741824 - $mo * 1048576 - $ko * 1024 ))
+printf "\n\n\nVotre repertoire personnel fait actuellement %d Go, %d Mo, %d Ko, %d Octets \n" "$go" "$mo" "$ko" "$o"
+if [ $mo -lt 100 ]
+then
+printf "\nAttention, votre repertoire personnel depasse la limite autorisee de 100 Mo!\n"
+fi
