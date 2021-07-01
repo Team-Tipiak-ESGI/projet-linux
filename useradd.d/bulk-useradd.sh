@@ -58,7 +58,7 @@ echo "##########################################################################
 
 sleep 2
 fileawk=$1
-print $1
+echo "ficher : " $1
 awk -F ':' -f parser.awk $fileawk > awk_out.tmp
 
 # Lecture du fichier sortie d'awk
