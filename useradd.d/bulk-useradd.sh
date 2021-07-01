@@ -57,9 +57,9 @@ echo "#										#"
 echo "###########################################################################"
 
 sleep 2
-file = $#
+fileawk=$#
 print $#
-awk -F ':' -f parser.awk $file > awk_out.tmp
+awk -F ':' -f parser.awk $fileawk > awk_out.tmp
 
 # Lecture du fichier sortie d'awk
 while read -r commands
