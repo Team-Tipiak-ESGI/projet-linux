@@ -1,21 +1,14 @@
 #!/bin/bash
-
-
 ## Setting var screen
-
 echo  "####################################################################"
 echo  "#    MISE EN PLACE DES VARIABLES D'ENVIRONNEMENT POUR LE SCRIPT    #"
 echo  "####################################################################"
-
 ## Setting var
-
 ## set
 # sortie immediate a l'echec
 # permet d'executer une commande meme si la premiere commande est fautive
 # i.e cmd_fautive || true
 set -e -o pipefail
-
-
 ## Initialisation des fonctions
 # outerr: sortie vers stderr
 outerr (){
@@ -32,7 +25,6 @@ echo  "#	 MERCI DE VERIFIER QUE VOUS POSSEDEZ LES DROITS ROOT 	  #"
 echo  "#	MERCI DE VERIFIER QUE VOUS AVEZ VOTRE FICHIER DE PRET	  #"
 echo  "####################################################################"
 sleep 2
-
 ## verifie que l'utilisateur a bel et bien mis un fichier en argument 
 ## si non retourne erreur
 if [ $# -eq 0 ]
