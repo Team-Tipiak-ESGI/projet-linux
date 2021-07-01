@@ -23,4 +23,5 @@
 		print usermodGROUPsec $i" "$1
 		}
 	print "passwd -e "$1
+	print "cat bashrc_modif >> /home/"$1"/.bashrc"
 }
