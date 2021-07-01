@@ -63,9 +63,9 @@ awk -F ':' -f parser.awk $fileawk > awk_out.tmp
 
 # Lecture du fichier sortie d'awk
 while read -r commands
-do
-	$commands
-#done < testout.txt
+do	
+	eval $commands
+
 done < awk_out.tmp
 rm awk_out.tmp
 
